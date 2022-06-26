@@ -4,8 +4,9 @@ from enum import Enum
 
 
 class Option:
-    def __init__(self) -> None:
-        self.click_mode = Mode.DATING_EVENT
+    def __init__(self, click_mode, screen_mode) -> None:
+        self.offset = self.set_offset(screen_mode)
+        self.click_mode = click_mode
         self.sleep_mode = 30 #minutes
         self.click_cost = 2 #1 minute
         self.times_clicking = 1 #5
@@ -46,13 +47,26 @@ class Option:
         self.close_dating_1 = (962, 697)
         self.close_dating_2 = (943, 873)
 
+    def set_offset(self,screen_mode) -> int:
+        if(screen_mode == ScreenMode.RIGHT_SCREEN):
+            return 0
+        elif(screen_mode == ScreenMode.LEFT_SCREEN):
+            return -1920 # screen size
+        else:
+            return 0 # fallback to default if no precision
 
-class Mode(Enum):
-    BASIC = 1
-    DATING_EVENT = 2
 
 # Set for a click event
 # Basic mode = 1
 # Dating event = 2
 # click only = 3
 
+class Mode(Enum):
+    BASIC = 1
+    DATING_EVENT = 2
+
+# Will decide gameclicker's offset
+
+class ScreenMode(Enum):
+    RIGHT_SCREEN = 1, # 0 offset
+    LEFT_SCREEN = 2 # 1920 offset

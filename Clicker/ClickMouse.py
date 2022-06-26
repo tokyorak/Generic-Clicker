@@ -50,8 +50,8 @@ class ClickMouse(threading.Thread):
 
 
     def clickAndWait(self, position, delay, message=''):
-        print("click on :", message, " ... and wait for ", delay ,"s")
-        self.mouse.position = position
+        print("click on : [", message, "]... and wait for ", delay ,"s")
+        self.mouse.position = (position[0] + self.options.offset, position[1])
         time.sleep(0.5)
         self.mouse.click(self.button)
         time.sleep(delay)
@@ -137,7 +137,7 @@ class ClickMouse(threading.Thread):
 
 
     def lower_volume(self):
-        self.options.menu_position = (1132,173)
+        # self.options.menu_position = (1132,173)
         # self.options.volume_1_position = (868,350) #(868,333)
         # self.options.volume_2_position = (868,382) #(868,369)
         self.clickAndWait(self.options.menu_position,1,"Menu Pos")
@@ -168,37 +168,16 @@ class ClickMouse(threading.Thread):
         self.clickAndWait(self.options.confirm_reload_position, 125,"Confirm Reload Pos")
 
         self.enter_in_game()
-        # self.clickAndWait(self.options.enter_position, 40,"Enter Pos")
-        
-        # self.clickAndWait(self.options.close_position, 1,"Close Pos")
-        # self.clickAndWait(self.options.close_position, 5,"Close Pos")
-        # self.clickAndWait(self.options.close_position_1_2, 5,"Close Pos 1_2")
-        # self.clickAndWait(self.options.close_position_last_chance, 3,"Close Pos Last chance")
-        # self.clickAndWait(self.options.close_position_last_chance, 3,"Close Pos Last chance")
-        # self.clickAndWait(self.options.close_position_last_chance, 3,"Close Pos Last chance")
-
-        ## self.clickAndWait(self.options.close_position_last_chance, 10)
 
         #============Lower the volume=====================
         # self.lower_volume()
 
-        # self.options.menu_position = (1132,173)
-        # self.options.volume_1_position = (868,350) #(868,333)
-        # self.options.volume_2_position = (868,382) #(868,369)
-        # self.clickAndWait(self.options.menu_position,1)
-        # self.clickAndWait(self.options.volume_1_position,1)
-        # self.clickAndWait(self.options.volume_2_position,1)
-        # self.clickAndWait(self.options.back_position,1)
-
         #============Open event view======================
         self.open_event_view()
-        # self.clickAndWait(self.options.event_position, 3,"Event Pos")
-        # self.clickAndWait(self.options.close_position, 2,"Close Pos")
 
         # self.choosePanel(4)
 
         #=======Set mouse to its final position===========
-        # self.mouse.position = final_position
         self.mouse.position = self.options.final_position
         # self.mouse.position = (944, 829)
         # self.mouse.position = (1036, 829)
@@ -209,10 +188,6 @@ class ClickMouse(threading.Thread):
             self.raise_basic_gauge(position)
         elif(mode == Mode.DATING_EVENT):
             self.collect_dating_energy()
-            # self.clickAndWait(self.options.energy_position,1,"Energy Pos")
-            # self.clickAndWait(self.options.collect_energy_position,3,"Collect Energy Pos")
-            # self.clickAndWait(self.options.close_dating_1,1,"Close Dating 1 Pos")
-            # self.clickAndWait(self.options.close_dating_2,1,"Close Dating 2 Pos")
         else:
             raise ValueError("Error in click mode")
 

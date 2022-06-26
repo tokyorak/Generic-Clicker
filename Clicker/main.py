@@ -5,16 +5,15 @@ from pynput.mouse import Button, Controller
 from pynput.keyboard import Listener, KeyCode
 from enum import Enum
 from math import floor
-from Option import Mode, Option
+from Option import Mode, Option, ScreenMode
 from ClickMouse import ClickMouse
 
 
 
 mouse = Controller() # Gets the mouse controller
 
-options = Option()
+options = Option(Mode.DATING_EVENT, ScreenMode.RIGHT_SCREEN)
 options.mouse = mouse
-options.click_mode = Mode.DATING_EVENT
 options.sleep_mode = 30 #minutes
 options.click_cost = 2 #1 minute
 options.times_clicking = 1 #5
@@ -45,7 +44,7 @@ options.final_position = (911, 836) # (962, 822) # (868, 829)
 options.reload_delay = 2700 # 45 min
 
 # volume position
-options.menu_position = (1147,166)
+options.menu_position = (1132,173)
 options.volume_1_position = (868,334) #(868,333)
 options.volume_2_position = (868,370) #(868,369)
 
@@ -54,6 +53,7 @@ options.energy_position = (789, 780)
 options.collect_energy_position = (1084, 773)
 options.close_dating_1 = (962, 697)
 options.close_dating_2 = (943, 873)
+
 
 
 
