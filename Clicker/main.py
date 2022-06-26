@@ -14,7 +14,7 @@ class Mode(Enum):
 # Basic mode = 1
 # Dating event = 2
 # click only = 3
-click_mode = Mode.BASIC
+click_mode = Mode.DATING_EVENT
 
 
 sleep_mode = 30 #minutes
@@ -165,13 +165,13 @@ class ClickMouse(threading.Thread):
         # self.clickAndWait(close_position_last_chance, 10)
 
         #============Lower the volume=====================
-        menu_position = (1132,173)
-        volume_1_position = (868,350) #(868,333)
-        volume_2_position = (868,382) #(868,369)
-        self.clickAndWait(menu_position,1)
-        self.clickAndWait(volume_1_position,1)
-        self.clickAndWait(volume_2_position,1)
-        self.clickAndWait(back_position,1)
+        # menu_position = (1132,173)
+        # volume_1_position = (868,350) #(868,333)
+        # volume_2_position = (868,382) #(868,369)
+        # self.clickAndWait(menu_position,1)
+        # self.clickAndWait(volume_1_position,1)
+        # self.clickAndWait(volume_2_position,1)
+        # self.clickAndWait(back_position,1)
 
         #============Open event view======================
         self.clickAndWait(event_position, 3)
