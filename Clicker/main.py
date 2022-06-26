@@ -5,8 +5,8 @@ from pynput.mouse import Button, Controller
 from pynput.keyboard import Listener, KeyCode
 from enum import Enum
 from math import floor
-import Option
-import ClickMouse
+from Option import Mode, Option
+from ClickMouse import ClickMouse
 
 
 
@@ -58,25 +58,26 @@ options.close_dating_2 = (943, 873)
 
 
 # Since Clickmouse inherits from thread class it can be launched as one
-click_thread = ClickMouse(options)
+click_thread = ClickMouse(options, mouse)
 click_thread.start()
 
 def on_press(key):
-    if key == start_stop_key:
+    if key == options.start_stop_key:
         if click_thread.running:
             click_thread.stop_clicking()
             print("Clicker paused")
         else:
             click_thread.start_clicking()
             print("Clicker resumed")
-    elif key == exit_key:
+    elif key == options.exit_key:
         click_thread.exit()
         listener.stop()
         print("Clicker stopped")
-    elif key == position_key:
+    elif key == options.position_key:
         click_thread.printPosition()
-    elif key == test_key:
-        click_thread.test()
+    elif key == options.test_key:
+        # click_thread.test()
+        click_thread.test2()
 
 with Listener(on_press = on_press) as listener:
     listener.join()
